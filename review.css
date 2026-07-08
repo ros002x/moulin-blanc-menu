@@ -1,0 +1,1 @@
+.contact-links{grid-template-columns:repeat(3,1fr);max-width:850px}.review-link strong{color:#f0d8a5}@media(max-width:760px){.contact-links{grid-template-columns:1fr}.review-link{grid-column:auto}}
