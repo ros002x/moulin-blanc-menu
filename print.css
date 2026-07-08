@@ -1,0 +1,14 @@
+.print-menu{display:none}.print-action{height:38px;padding:0 13px;border:1px solid var(--line);border-radius:99px;display:flex;align-items:center;gap:7px;color:var(--ink);font:600 11px "DM Sans";background:white;cursor:pointer}.print-action svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7}
+@media print{
+  @page{size:A4 portrait;margin:10mm 11mm}
+  *{box-shadow:none!important;text-shadow:none!important;animation:none!important}
+  body{background:#fff!important;color:#302b29!important;padding:0!important;font-family:"DM Sans",Arial,sans-serif}
+  body>*:not(.print-menu){display:none!important}
+  .print-menu{display:block!important}
+  .print-head{display:grid;grid-template-columns:1fr auto;align-items:center;border-bottom:1.5pt solid #514947;padding-bottom:5mm;margin-bottom:5mm}
+  .print-brand{display:flex;align-items:center;gap:4mm}.print-brand img{width:16mm;height:19mm;object-fit:contain;opacity:.75}.print-brand h1{font:600 28pt/1 "Big Shoulders Display",sans-serif;letter-spacing:.04em;margin:0}.print-brand p{font-size:6.5pt;letter-spacing:.35em;margin:1.5mm 0 0;color:#777}
+  .print-meta{text-align:right;font-size:7pt;line-height:1.55}.print-meta strong{display:block;font-size:9pt}
+  .print-columns{column-count:2;column-gap:9mm;column-rule:.5pt solid #ddd}
+  .print-category{break-inside:avoid-column;margin:0 0 5mm}.print-category h2{font:600 18pt "Big Shoulders Display",sans-serif;margin:0 0 2mm;padding-bottom:1.5mm;border-bottom:1pt solid #8d887e;color:#514947}.print-row{display:grid;grid-template-columns:1fr auto;gap:1mm 3mm;break-inside:avoid;padding:1.6mm 0;border-bottom:.35pt dotted #bbb}.print-row h3{font-size:8.2pt;line-height:1.2;margin:0}.print-row strong{font-size:8pt;white-space:nowrap}.print-row p{grid-column:1/2;font-size:6.4pt;line-height:1.25;color:#666;margin:0}.print-notes{border-top:1pt solid #514947;margin-top:4mm;padding-top:2.5mm;display:grid;grid-template-columns:1fr auto;gap:8mm;font-size:6.4pt;line-height:1.4}.print-notes strong{font-size:8pt}
+}
+@media(max-width:760px){button,a{-webkit-tap-highlight-color:transparent}.category{min-height:40px}.top-actions a,.search button{min-width:40px;min-height:40px}.search input{font-size:16px}.menu-item{content-visibility:auto;contain-intrinsic-size:110px}.print-action{display:none!important}}

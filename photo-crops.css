@@ -1,0 +1,3 @@
+.item-photo[alt*="Caffè"]{object-position:left}
+.item-photo[alt*="Arachide"]{object-position:center}
+.item-photo[alt*="Pistacchio"]{object-position:right}
