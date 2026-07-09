@@ -33,6 +33,17 @@ function renderPrint(){
       {name:'Insalata mista',price:3,desc:''},
       {name:'Insalatona',price:10,desc:'Insalata mista, pomodorini, mozzarella, tonno, mais e olive.'}
     ],
+    Dessert:[
+      {name:'Cheesecake caramello salato',price:6,desc:''},
+      {name:'Tiramisù gluten free',price:6,desc:'Gluten free.'},
+      {name:'Smeraldi di Bronte',price:7,desc:'Pistacchio e fondente 70%.'},
+      {name:'Carezza di mandorle',price:7,desc:'Mandorle, fondente e amarena.'},
+      {name:'Delizia al limone',price:7,desc:'Limone Costa di Amalfi IGP.'},
+      {name:'Cheesecake frutti di bosco',price:7,desc:''},
+      {name:'Frutta realistica · Caffè',price:8,desc:''},
+      {name:'Frutta realistica · Arachide',price:8,desc:''},
+      {name:'Frutta realistica · Pistacchio',price:8,desc:''}
+    ],
     Bevande:[
       {name:'Acqua naturale o frizzante',price:'500 ml € 1,00 · 1 L € 1,50',desc:''},
       {name:'Vino rosso locale',price:'500 ml € 4,00 · 1 L € 7,00',desc:''},

@@ -13,6 +13,13 @@
   .print-page-columns{height:100%;min-height:0;column-gap:6mm;column-rule:.45pt solid #ddd;column-fill:auto;overflow:hidden}.print-page.front .print-page-columns{column-count:2}.print-page.back .print-page-columns{column-count:2}
   .print-page .print-category{break-inside:auto;margin-bottom:3.2mm}.print-page .print-category h2{break-after:avoid;font-size:16pt;margin-bottom:1.2mm;padding-bottom:1.1mm}.print-page .print-row{padding:1.28mm 0;gap:.75mm 2mm}.print-page .print-row h3{font-size:7.8pt;line-height:1.15}.print-page .print-row strong{font-size:7.4pt}.print-page .print-row p{font-size:5.9pt;line-height:1.2}
   .print-page.back .print-row strong{max-width:36mm;white-space:normal;text-align:right;line-height:1.12}
+  .print-page.back .print-page-columns{column-gap:7mm;column-rule:.55pt solid #cfc8bf}
+  .print-page.back .print-category{margin-bottom:2.35mm}
+  .print-page.back .print-category h2{font-size:17.5pt;margin-bottom:1mm;padding-bottom:.85mm;border-bottom:1.05pt solid #514947}
+  .print-page.back .print-row{padding:1.08mm 0;border-bottom:.4pt dotted #aaa}
+  .print-page.back .print-row h3{font-size:8.15pt;line-height:1.13}
+  .print-page.back .print-row strong{font-size:7.75pt}
+  .print-page.back .print-row p{font-size:6.15pt;line-height:1.16;color:#5f5752}
   .print-page.front .print-page-columns{column-gap:8mm;column-rule:.55pt solid #cfc8bf}
   .print-page.front .print-category:nth-child(2){break-before:auto}
   .print-page.front .print-category{margin-bottom:3mm}
