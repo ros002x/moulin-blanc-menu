@@ -28,33 +28,57 @@ const grid=document.querySelector('#menu-grid'), tabs=document.querySelector('#c
 const euro=n=>new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR'}).format(n);
 function renderPrint(){
   const compactPrint={
+    Speciali:[
+      {name:'Bologna',price:10,desc:'Mortadella, pistacchio, stracciatella.'},
+      {name:'Pesto',price:9,desc:'Pesto, pomodori secchi, grana.'},
+      {name:'Noci',price:10,desc:'Gorgonzola, speck, noci.'},
+      {name:'Contessa',price:10,desc:'Datterini gialli, porcini, pancetta.'},
+      {name:'Deliziosa',price:11,desc:'Provola, Tropea, melanzane, nduja.'},
+      {name:'Inferno',price:9,desc:'Gorgonzola, piccante, Tropea.'},
+      {name:'Fiori di zucca',price:12,desc:'Provola, acciughe, fiori di zucca.'},
+      {name:'Trevigiana',price:10,desc:'Radicchio, gorgonzola, speck.'},
+      {name:'Pazza',price:11,desc:'Gorgonzola, salame, crudo.'},
+      {name:'Paesana',price:12,desc:'Salsiccia fresca, peperoni cruschi.'},
+      {name:'Nobile',price:10,desc:'Datterini gialli, bufala.'},
+      {name:'Montanara',price:11,desc:'Provola, salsiccia, porcini.'},
+      {name:'Saporita',price:10,desc:'Bufala, salame, pomodori secchi.'},
+      {name:'Bufalona',price:12,desc:'Bufala, melanzane, piccante.'},
+      {name:'Contadina',price:9,desc:'Datterini, capocollo, stracciatella.'}
+    ],
+    Antipasti:[
+      {name:'Carpaccio di bresaola',price:12,desc:''},
+      {name:'Peperoni cruschi',price:12,desc:''},
+      {name:"All'italiana",price:10,desc:'Affettati, mozzarella, verdure, olive.'},
+      {name:'Caprese',price:8,desc:''},
+      {name:'Crudo e melone',price:8,desc:''}
+    ],
     Contorni:[
-      {name:'Patatine fritte',price:'Media € 6,00 · Grande € 9,00',desc:''},
+      {name:'Patatine fritte media / grande',price:'€6 / €9',desc:''},
       {name:'Insalata mista',price:3,desc:''},
-      {name:'Insalatona',price:10,desc:'Insalata mista, pomodorini, mozzarella, tonno, mais e olive.'}
+      {name:'Insalatona',price:10,desc:'Mista, mozzarella, tonno, mais, olive.'}
     ],
     Dessert:[
       {name:'Cheesecake caramello salato',price:6,desc:''},
-      {name:'Tiramisù gluten free',price:6,desc:'Gluten free.'},
-      {name:'Smeraldi di Bronte',price:7,desc:'Pistacchio e fondente 70%.'},
-      {name:'Carezza di mandorle',price:7,desc:'Mandorle, fondente e amarena.'},
-      {name:'Delizia al limone',price:7,desc:'Limone Costa di Amalfi IGP.'},
+      {name:'Tiramisù gluten free',price:6,desc:''},
+      {name:'Smeraldi di Bronte',price:7,desc:''},
+      {name:'Carezza di mandorle',price:7,desc:''},
+      {name:'Delizia al limone',price:7,desc:''},
       {name:'Cheesecake frutti di bosco',price:7,desc:''},
       {name:'Frutta realistica · Caffè',price:8,desc:''},
       {name:'Frutta realistica · Arachide',price:8,desc:''},
       {name:'Frutta realistica · Pistacchio',price:8,desc:''}
     ],
     Bevande:[
-      {name:'Acqua naturale o frizzante',price:'500 ml € 1,00 · 1 L € 1,50',desc:''},
-      {name:'Vino rosso locale',price:'500 ml € 4,00 · 1 L € 7,00',desc:''},
-      {name:'Coca-Cola',price:'33 cl € 2,50 · 1 L € 6,00',desc:'Bottiglia in vetro.'},
-      {name:'Fanta',price:'33 cl € 2,50 · 1 L € 6,00',desc:'Bottiglia in vetro.'},
-      {name:'Estathé',price:'Limone/Pesca 33 cl € 2,50',desc:''},
-      {name:'Moretti bionda alla spina',price:'20 cl € 2,50 · 40 cl € 4,50',desc:''},
-      {name:'Moretti rossa alla spina',price:'20 cl € 3,00 · 40 cl € 5,50',desc:''},
-      {name:'Montelvini bianco frizzante',price:'500 ml € 5,00 · 1 L € 9,00',desc:''},
-      {name:'Heineken',price:'33 cl € 2,50 · 66 cl € 4,50 · 0.0 € 3,00',desc:''},
-      {name:'Ichnusa / Messina / Raffo',price:'33 cl € 3,00',desc:''}
+      {name:'Acqua 500 ml / 1 L',price:'€1 / €1,50',desc:''},
+      {name:'Vino rosso locale 500 ml / 1 L',price:'€4 / €7',desc:''},
+      {name:'Coca-Cola 33 cl / 1 L',price:'€2,50 / €6',desc:''},
+      {name:'Fanta 33 cl / 1 L',price:'€2,50 / €6',desc:''},
+      {name:'Estathé limone / pesca 33 cl',price:'€2,50',desc:''},
+      {name:'Moretti bionda 20 cl / 40 cl',price:'€2,50 / €4,50',desc:''},
+      {name:'Moretti rossa 20 cl / 40 cl',price:'€3 / €5,50',desc:''},
+      {name:'Montelvini bianco 500 ml / 1 L',price:'€5 / €9',desc:''},
+      {name:'Heineken 33 / 66 / 0.0',price:'€2,50 / €4,50 / €3',desc:''},
+      {name:'Ichnusa / Messina / Raffo 33 cl',price:'€3',desc:''}
     ]
   };
   const itemsFor=cat=>compactPrint[cat]||menu.filter(x=>x.cat===cat);
