@@ -26,7 +26,32 @@ const cats=['Tutto','Rosse','Bianche','Speciali','Antipasti','Secondi','Contorni
 let active='Tutto';
 const grid=document.querySelector('#menu-grid'), tabs=document.querySelector('#categories'), search=document.querySelector('#search');
 const euro=n=>new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR'}).format(n);
-function renderPrint(){const block=cat=>`<section class="print-category"><h2>${cat}</h2>${menu.filter(x=>x.cat===cat).map(x=>`<article class="print-row"><h3>${x.name}</h3><strong>${euro(x.price)}</strong>${x.desc?`<p>${x.desc}</p>`:''}</article>`).join('')}</section>`;const page=(side,cats,label)=>`<section class="print-page ${side}"><header class="print-page-head"><div class="print-page-brand"><img src="assets/logo-mark.svg" alt=""><div><h1>MOULIN BLANC</h1><p>PIZZERIA · NOVA SIRI</p></div></div><div class="print-side"><b>${label}</b><span>Viale Siris, 27 · +39 328 916 9724</span></div></header><div class="print-page-columns">${cats.map(block).join('')}</div><footer class="print-page-foot"><span>Comunicare allergie o intolleranze. Disponibile mozzarella senza lattosio. * Prodotto surgelato o di stagione.</span><strong>Coperto € 2,00</strong></footer></section>`;document.querySelector('#print-columns').innerHTML=page('front',['Rosse','Bianche','Speciali'],'LE PIZZE · FRONTE')+page('back',['Antipasti','Secondi','Contorni','Dessert','Bevande'],'CUCINA & BEVANDE · RETRO')}
+function renderPrint(){
+  const compactPrint={
+    Contorni:[
+      {name:'Patatine fritte',price:'Media € 6,00 · Grande € 9,00',desc:''},
+      {name:'Insalata mista',price:3,desc:''},
+      {name:'Insalatona',price:10,desc:'Insalata mista, pomodorini, mozzarella, tonno, mais e olive.'}
+    ],
+    Bevande:[
+      {name:'Acqua naturale o frizzante',price:'500 ml € 1,00 · 1 L € 1,50',desc:''},
+      {name:'Vino rosso locale',price:'500 ml € 4,00 · 1 L € 7,00',desc:''},
+      {name:'Coca-Cola',price:'33 cl € 2,50 · 1 L € 6,00',desc:'Bottiglia in vetro.'},
+      {name:'Fanta',price:'33 cl € 2,50 · 1 L € 6,00',desc:'Bottiglia in vetro.'},
+      {name:'Estathé',price:'Limone/Pesca 33 cl € 2,50',desc:''},
+      {name:'Moretti bionda alla spina',price:'20 cl € 2,50 · 40 cl € 4,50',desc:''},
+      {name:'Moretti rossa alla spina',price:'20 cl € 3,00 · 40 cl € 5,50',desc:''},
+      {name:'Montelvini bianco frizzante',price:'500 ml € 5,00 · 1 L € 9,00',desc:''},
+      {name:'Heineken',price:'33 cl € 2,50 · 66 cl € 4,50 · 0.0 € 3,00',desc:''},
+      {name:'Ichnusa / Messina / Raffo',price:'33 cl € 3,00',desc:''}
+    ]
+  };
+  const itemsFor=cat=>compactPrint[cat]||menu.filter(x=>x.cat===cat);
+  const price=x=>typeof x.price==='number'?euro(x.price):x.price;
+  const block=cat=>`<section class="print-category"><h2>${cat}</h2>${itemsFor(cat).map(x=>`<article class="print-row"><h3>${x.name}</h3><strong>${price(x)}</strong>${x.desc?`<p>${x.desc}</p>`:''}</article>`).join('')}</section>`;
+  const page=(side,cats,label)=>`<section class="print-page ${side}"><header class="print-page-head"><div class="print-page-brand"><img src="assets/logo-mark.svg" alt=""><div><h1>MOULIN BLANC</h1><p>PIZZERIA · NOVA SIRI</p></div></div><div class="print-side"><b>${label}</b><span>Viale Siris, 27 · +39 328 916 9724</span></div></header><div class="print-page-columns">${cats.map(block).join('')}</div><footer class="print-page-foot"><span>Comunicare allergie o intolleranze. Disponibile mozzarella senza lattosio. * Prodotto surgelato o di stagione.</span><strong>Coperto € 2,00</strong></footer></section>`;
+  document.querySelector('#print-columns').innerHTML=page('front',['Rosse','Bianche'],'LE PIZZE · FRONTE')+page('back',['Speciali','Antipasti','Secondi','Contorni','Dessert','Bevande'],'SPECIALI · CUCINA · RETRO')
+}
 function renderTabs(){tabs.innerHTML=cats.map(c=>`<button class="category ${c===active?'active':''}" role="tab" aria-selected="${c===active}" data-cat="${c}">${menuL10n.category(c)}</button>`).join('')}
 function render(){const q=search.value.trim().toLocaleLowerCase();const list=menu.filter(x=>{const tx=menuL10n.item(x);return(active==='Tutto'||x.cat===active)&&(!q||`${x.name} ${x.desc} ${x.cat} ${tx.name} ${tx.desc}`.toLocaleLowerCase().includes(q))});const card=(x,i=0)=>{const photo=photos[x.name],tx=menuL10n.item(x);return `<article class="menu-item ${photo?'has-photo':''} reveal" style="animation-delay:${Math.min(i,8)*25}ms">${photo?`<img class="item-photo" src="${photo}" alt="${tx.name}" loading="lazy">`:''}<div class="item-name">${tx.name}${x.tag?`<span class="item-tag">${x.tag}</span>`:''}</div><div class="item-price">${euro(x.price)}</div>${tx.desc?`<p class="item-desc">${tx.desc}</p>`:''}</article>`};document.querySelector('#section-title').textContent=q?menuL10n.ui('results'):active==='Tutto'?menuL10n.ui('menu'):menuL10n.category(active);document.querySelector('#section-kicker').textContent=q?'SEARCH':active==='Tutto'?menuL10n.ui('all'):menuL10n.ui('selection');document.querySelector('#item-count').textContent=`${list.length} ${list.length===1?menuL10n.ui('one'):menuL10n.ui('many')}`;if(active==='Tutto'&&!q){const order=['Rosse','Bianche','Speciali','Antipasti','Secondi','Contorni','Dessert','Bevande'];grid.innerHTML=order.map(cat=>{const items=list.filter(x=>x.cat===cat);return `<section class="menu-group"><header class="menu-group-head"><h4>${menuL10n.category(cat)}</h4><span>${items.length} ${menuL10n.ui('many').toUpperCase()}</span></header><div class="menu-group-grid">${items.map(card).join('')}</div></section>`}).join('')}else{grid.innerHTML=list.map(card).join('')}document.querySelector('#empty-state').hidden=!!list.length}
 tabs.addEventListener('click',e=>{const b=e.target.closest('[data-cat]');if(!b)return;active=b.dataset.cat;search.value='';renderTabs();render()});search.addEventListener('input',render);document.querySelector('#clear-search').addEventListener('click',()=>{search.value='';search.focus();render()});document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();search.focus()}});renderTabs();render();renderPrint();
